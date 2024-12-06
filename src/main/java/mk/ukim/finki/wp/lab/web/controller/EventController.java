@@ -2,6 +2,7 @@ package mk.ukim.finki.wp.lab.web.controller;
 
 
 import mk.ukim.finki.wp.lab.model.Event;
+import mk.ukim.finki.wp.lab.model.Location;
 import mk.ukim.finki.wp.lab.service.EventService;
 import mk.ukim.finki.wp.lab.service.LocationService;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,22 @@ public class EventController {
     }
 
     @GetMapping
-    public String getEventsPage(@RequestParam(required = false) String error, Model model){
-        List<Event> eventList = eventService.listAll();
+    public String getEventsPage(@RequestParam(required = false) String error,
+                                @RequestParam(required = false) String text,
+                                @RequestParam(required = false) Double rating,
+                                @RequestParam(required = false) String location,
+                                Model model){
+        List<Event> eventList;
+        if(text!=null && rating!=null){
+           eventList = eventService.searchEvents(text,rating);
+        }
+        else if(location!=null){
+            Location location1 = locationService.findByName(location).orElseThrow(RuntimeException::new);
+            eventList = eventService.findByLocId(location1.getId());
+        }
+        else {
+            eventList = eventService.listAll();
+        }
         model.addAttribute("events",eventList);
         return "listEvents";
     }

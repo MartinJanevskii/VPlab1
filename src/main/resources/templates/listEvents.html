@@ -21,12 +21,18 @@
 <main>
 
     <h2>Search an event:</h2>
-    <form th:method="GET" th:action="@{/}">
+    <form th:method="GET" th:action="@{/events}">
         <label>Text
             <input type="text" name="text"></label>
         <label>
             Rating
             <input type="number" name="rating">
+        </label>
+        <input type="submit" value="List">
+    </form>
+    <form th:method="GET" th:action="@{/events}">
+        <label>Location
+            <input type="text" name="location">
         </label>
         <input type="submit" value="List">
     </form>

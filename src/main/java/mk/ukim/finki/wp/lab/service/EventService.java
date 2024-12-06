@@ -13,8 +13,10 @@ public interface EventService {
     Optional<Event> save(String name, String description, Double popularity, Long id);
     Optional<Event> findById(Long id);
     Optional<Event>update(Long id, String name, String description, Double popularityScore, Long locationId);
-    Optional<Event>delete(Long id);
+    void delete(Long id);
     Optional<Event> increasePopularity(Long id);
+
+    List<Event> findByLocId(Long id);
 }
 
 

@@ -45,7 +45,7 @@ public class EventListServlet extends HttpServlet {
             rating = null;
 
         if((text!=null && !text.isEmpty()) || rating==null){
-            events = es.searchEvents(text, rating);
+           // events = es.searchEvents(text, rating);
         }
         else{
             events = es.listAll();

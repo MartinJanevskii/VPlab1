@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface LocationService {
     List<Location> findAll();
     Optional<Location> findById(Long id);
+    Optional<Location> findByName(String name);
+
 
 }

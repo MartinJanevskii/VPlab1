@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class LocationRepository {
+public class InMemoryLocationRepository {
     static List<Location> locationList = new ArrayList<>();
 
-    public LocationRepository(){
+    public InMemoryLocationRepository(){
         locationList.add(new Location("Akron", "Ohio","180000", "LeBron's hometown"));
         locationList.add(new Location("Los Angeles","Blagoja Toska 11","150000","Teteks homeground"));
         locationList.add(new Location("Skopje", "Partizanska","500000", "Finki, feit, tmf"));

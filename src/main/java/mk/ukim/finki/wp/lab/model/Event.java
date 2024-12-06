@@ -1,19 +1,23 @@
 package mk.ukim.finki.wp.lab.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@Entity
 public class Event {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     String description;
-    double popularityScore;
+    Double popularityScore;
+    @ManyToOne
     Location location;
     boolean liked;
 
-    public Event(String name, String description, double popularityScore, Location location) {
-        this.id = (long) (Math.random()*1000);
+    public Event(String name, String description, Double popularityScore, Location location) {
         this.name = name;
         this.description = description;
         this.popularityScore = popularityScore;
@@ -24,7 +28,7 @@ public class Event {
         this.id = null;
         this.name = null;
         this.description = null;
-        this.popularityScore = 0;
+        this.popularityScore = 0.0;
         this.location = null;
         this.liked = false;
     }
